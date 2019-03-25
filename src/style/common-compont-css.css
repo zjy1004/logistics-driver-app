@@ -1,0 +1,199 @@
+/* .vux-tab-wrap{
+  height: 80px!important;
+  padding-top: 0px!important;
+}
+.vux-tab-container{
+  height: 80px!important;
+  border-bottom: 1px solid #aaa;
+}
+.vux-tab-container .vux-tab{
+  height: 80px;
+}
+.vux-tab-container .vux-tab .vux-tab-item,.vux-tab-container .vux-tab .vux-tab-item.vux-tab-selected{
+  line-height: 80px;
+  color: #5677fc;
+}
+.vux-tab-container .vux-tab .vux-tab-item{
+  color: #9A9A9A;
+}
+.vux-tab-container .vux-tab .vux-tab-ink-bar{
+  background-color: #5677fc;
+  width: 20%;
+  margin: 0 auto;
+} */
+/* 全局消息提示 */
+.vux-toast .weui-toast{
+  width: 240px!important;
+}
+.vux-toast .weui-toast__content{
+  font-size: 28px;
+  line-height: 40px;
+}
+/* 搜索框默认placeholder修改 */
+.business .weui-search-bar .weui-search-bar__box input::-webkit-input-placeholder{
+  font-size: 26px;
+  color: #CFCFCF;
+}
+/* 顶部返回组件样式 */
+/* .vux-header{
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+.vux-header .vux-header-left{
+  top: 20px;
+}
+.vux-header .vux-header-left .left-arrow{
+  margin-left: 20px;
+}
+.vux-header .vux-header-left .left-arrow:before{
+  top: 18px;
+  width: 20px;
+  height: 20px;
+  border-color: #1C1C1C;
+}
+.vux-header .vux-header-title{
+  margin: 0 auto;
+}
+.vux-header .vux-header-title span{
+  font-size: 36px;
+  color: #1A1A1A;
+} */
+.weui-dialog{
+  width: 538px!important;
+  min-height: 282px;
+  max-width: 80%!important;
+}
+.weui-dialog .weui-dialog__bd{
+  width: 100%;
+  height: 200px;
+  padding: 0px 90px!important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weui-dialog .weui-dialog__bd p{
+  font-size: 34px;
+  color: #101010;
+}
+.weui-dialog .weui-dialog__ft{
+  width: 100%;
+  height: 82px;
+}
+.weui-dialog .weui-dialog__ft a{
+  height: 82px;
+  line-height: 82px;
+  font-size: 28px;
+  color: #101010;
+  text-align: center;
+}
+.weui-dialog .weui-dialog__ft .weui-dialog__btn_primary{
+  background: #4D80FD;
+  color: #fff;
+}
+/* pop */
+.vux-popup-header{
+  height: 70px!important;
+  display: flex;
+  align-items: center;
+}
+.vux-popup-header-left{
+  font-size: 26px;
+  color: #666!important;
+}
+.vux-popup-header-title{
+  font-size: 30px;
+  font-weight: bold;
+  color: #3E3E3E!important;
+}
+.vux-popup-header-right{
+  font-size: 26px;
+  color: #4380FF!important;
+}
+.weui-cells .weui-cells_radio .weui-check__label{
+  height: 80px;
+}
+.weui-cells .weui-cells_radio .weui-cell__bd{
+  flex: none;
+  width: 660px;
+  text-indent: 8%;
+}
+.weui-cells .weui-cells_radio .weui-cell__bd p{
+  text-align: center;
+}
+.weui-cells_radio .weui-check:checked + .weui-icon-checked{
+  color: #4380FF!important;
+}
+.weui-cells_radio .weui-check:checked + .weui-icon-checked:before{
+  color: #4380FF!important;
+  font-size: 30px!important;
+}
+/* index-list样式 */
+.index-list-container{
+  display: flex;
+  flex: 1;
+}
+.mint-indexlist{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.mint-indexlist-content{
+  overflow: auto !important;
+  height: 100% !important;
+}
+.mint-indexsection-index{
+  text-indent: 20px;
+  font-size: 30px!important;
+  background: rgb(243,244,245)!important;
+}
+.mint-indexlist-nav{
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100% !important;
+  background: rgb(243,244,245)!important;
+  border-left: none!important;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+.mint-indexsection{
+  margin-top: 20px!important;
+}
+.mint-indexsection ul div:first-child{
+  padding-top: 0px!important;
+}
+.mint-indexlist-navlist{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 100%;
+}
+.mint-indexlist-navitem{
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  font-size: 26px!important;
+}
+.mint-indexlist-indicator {
+  width: 100px !important;
+  line-height: 100px !important;
+  height: 100px !important;
+  font-size: 34px !important;
+}
+.vux-header .vux-header-right {
+  top: 20px !important;
+}
+.vux-header .vux-header-right .vux-header-more:after {
+  content: none !important;
+}
+.vux-header .vux-header-right a{
+  margin-right: 10px !important;
+  width: 30px;
+  height: 30px;
+  background: url(../image/refresh.png) no-repeat;
+  background-size: 100% 100%;
+}

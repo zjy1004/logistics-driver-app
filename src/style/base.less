@@ -1,0 +1,47 @@
+@color-extrude: #5677fc;
+// 字体大小、颜色
+.mixin-sc(@size:@text-default;@color:@color-default;){
+  font-size: @size;
+  color: @color;
+}
+
+// 倒三角
+.minxin-triangle(){
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid @color-identifying;
+}
+.minxin-triangles(@height:8px,@width:5px,@colorTop:#ffffff,@colorRight:#4087b5,@colorBotton:#4087b5,@colorLeft:#4087b5,@style:solid){
+    width: 0;
+    height: 0;
+    border-width: @height @width;
+    border-style: @style;
+    border-color: @colorTop @colorRight @colorBotton @colorLeft;
+  }
+// icon 图标
+.mixin-bis(@width, @height, @positionX, @positonY) {
+    width: @width;
+    height: @height;
+	  background-image: url('../image/icon.png');
+    background-repeat: no-repeat;
+    background-position-x: @positionX;
+    background-position-y: @positonY;
+}
+// icon 图标
+.mixin-logidtic(@width, @height, @positionX, @positonY) {
+  width: @width;
+  height: @height;
+  background-image: url('../image/sprite.png');
+  background-repeat: no-repeat;
+  background-position-x: @positionX;
+  background-position-y: @positonY;
+}
+// 折叠卡片下拉箭头样式
+.weui-cell_access .weui-cell__ft:after {
+  border-color: #4D7BFE !important;
+  height: 12px !important;
+  width: 12px !important;
+  right: 10px !important;
+}
