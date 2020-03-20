@@ -406,6 +406,20 @@ export default {
     // 签收Ajax
     signFor () {
       WayBillAjax.SignFor(this.signForParam).then(res => {
+        if (res.code === 200) {
+          this.$vux.toast.show({
+            type: 'success',
+            text: '签收成功'
+          })
+          setTimeout(() => {
+            this.getRecWayBill()
+          }, 1000)
+        } else {
+          this.$vux.toast.show({
+            type: 'warn',
+            text: res.message
+          })
+        }
       })
     },
     // 点击确认签收
@@ -416,13 +430,6 @@ export default {
     onConfirmSignFor () {
       this.concatArr()
       this.signFor()
-      setTimeout(() => {
-        this.getRecWayBill()
-        this.$vux.toast.show({
-          type: 'success',
-          text: '签收成功'
-        })
-      }, 1000)
     },
     // 成功收款
     paySuccess () {
@@ -513,16 +520,24 @@ export default {
       }, 500)
     },
     // 修改成功
-    confirmReject () {
-      this.rejectShow = false
-      setTimeout(() => {
+    confirmReject (val, message) {
+      if (val) {
+        this.rejectShow = false
+        setTimeout(() => {
+          this.$vux.toast.show({
+            type: 'success',
+            text: '拒收成功'
+          })
+          this.receiveAll = false
+          this.getRecWayBill()
+        }, 500)
+      } else {
+        this.rejectShow = false
         this.$vux.toast.show({
-          type: 'success',
-          text: '拒收成功'
+          type: 'warn',
+          text: message
         })
-        this.receiveAll = false
-        this.getRecWayBill()
-      }, 500)
+      }
     }
   },
   computed: {

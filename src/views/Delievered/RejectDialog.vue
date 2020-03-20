@@ -1,4 +1,4 @@
-<template>
+e<template>
   <div class="reject">
     <div v-transfer-dom>
       <x-dialog
@@ -164,7 +164,9 @@ export default {
       WayBillAjax.Reject(this.rejectParam).then(res => {
         if (res.code === 200) {
           this.dialogShow = false
-          this.$emit('confirm-reject', true)
+          this.$emit('confirm-reject', true, res.message)
+        } else {
+          this.$emit('confirm-reject', false, res.message)
         }
       })
     }

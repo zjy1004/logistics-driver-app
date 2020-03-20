@@ -65,6 +65,8 @@ export default {
   data () {
     return {
       // settlementMethodName: '',
+      timeOut1: 0,
+      timeOut2: 0,
       dataListArr: [],
       weChartUrl: '',
       alPayUrl: '',
@@ -152,12 +154,22 @@ export default {
               this.weChartUrl = res.data.pcUrl
             }
             this.timer1 = window.setInterval(() => {
+              this.timeOut1++
+              if (this.timeOut1 >= 15 * 30) {
+                window.clearInterval(this.timer1)
+                this.timeOut1 = 0
+              }
               this.paymentNotice({merchantNo: res.data.merchantNo})
             }, 3000)
           }
           if (res.data.paymentType === 2) {
             this.alPayUrl = res.data.pcUrl
             this.timer2 = window.setInterval(() => {
+              this.timeOut2++
+              if (this.timeOut2 >= 15 * 30) {
+                window.clearInterval(this.timer2)
+                this.timeOut2 = 0
+              }
               this.paymentNotice({merchantNo: res.data.merchantNo})
             }, 3000)
           }

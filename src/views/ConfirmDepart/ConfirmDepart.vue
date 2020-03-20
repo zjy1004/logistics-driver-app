@@ -333,6 +333,11 @@ export default {
           })
           // this.getTruckBill()
           this.$router.push({name: 'Deal', query: {fromType: 4}})
+        } else {
+          this.$vux.toast.show({
+            type: 'warn',
+            text: res.message
+          })
         }
       })
     },
@@ -349,6 +354,11 @@ export default {
           })
           this.getWayBill(true)
           this.getTruckBill()
+        } else {
+          this.$vux.toast.show({
+            type: 'warn',
+            text: res.message
+          })
         }
       })
     },
@@ -365,6 +375,11 @@ export default {
             text: '卸货成功！'
           })
           this.getTruckBill()
+        } else {
+          this.$vux.toast.show({
+            type: 'warn',
+            text: res.message
+          })
         }
       })
     },

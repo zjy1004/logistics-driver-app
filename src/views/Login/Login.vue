@@ -4,24 +4,20 @@
     <div class="bg-con"></div>
     <div class="form-con">
       <div class="account-con">
-        <input type="text" v-model="form.account" placeholder="请输入用户名">
+        <input type="text" @input="inputUserName" v-model="form.account" placeholder="请输入用户名">
         <div class="account-icon"></div>
       </div>
       <div class="pass-con">
         <input type="password" v-model="form.password" placeholder="请输入密码">
         <div class="password-icon"></div>
       </div>
+      <div class="remeber-con">
+        <input type="checkbox" v-model="form.remeberPass" @change="remeberChange(form.remeberPass)"/><span>记住密码</span>
+      </div>
     </div>
     <div class="submit-con1">
       <div class="submit-con" @click="login()">登录</div>
     </div>
-    <!-- <group>
-      <x-input title="用户名:" v-model="form.account" placeholder="请输入用户名"></x-input>
-    </group>
-    <group>
-      <x-input title="密码:" type="password" v-model="form.password" placeholder="请输入密码"></x-input>
-    </group> -->
-    <!-- <x-button type="primary" @click.native="login()">登录</x-button> -->
   </div>
 </template>
 
@@ -35,7 +31,8 @@ export default {
     return {
       form: {
         account: '',
-        password: ''
+        password: '',
+        remeberPass: false
       },
       showPositionValue: false
     }
@@ -46,9 +43,23 @@ export default {
     XButton
   },
   created () {
+    if (this.getCookie('user') && this.getCookie('pswd')) {
+      this.form.account = this.getCookie('user')
+      this.form.password = this.base64decode(this.getCookie('pswd'))
+      this.form.remeberPass = true
+    }
     this.getPhoneInfo()
   },
   methods: {
+    inputUserName () {
+      this.form.password = ''
+    },
+    remeberChange (val) {
+      if (!val) {
+        this.delCookie('user')
+        this.delCookie('pswd')
+      }
+    },
     // 登录
     login () {
       if (this.form.account === '' && this.form.password !== '') {
@@ -69,6 +80,10 @@ export default {
       } else {
         LoginAjax.Login({account: this.form.account, password: this.form.password, loginType: 2}).then((response) => {
           if (response.code === 200) {
+            if (this.form.remeberPass) {
+              this.setCookie({name: 'user', value: this.form.account, day: 7}) // 保存帐号到cookie，有效期7天
+              this.setCookie({name: 'pswd', value: this.base64encode(this.form.password), day: 7}) // 保存密码到cookie，有效期7天
+            }
             let token = response.data.token
             sessionStorage.setItem('token', token)
             sessionStorage.setItem('userInfo', JSON.stringify(response.data))
@@ -143,6 +158,7 @@ export default {
 
 <style lang="less" scoped>
 @import '~vux/src/styles/1px.less';
+@import '../../style/base.less';
 .login{
   height: 100%;
   width: 100%;
@@ -157,7 +173,7 @@ export default {
   }
   .form-con{
     width: 750px;
-    height: 200px;
+    height: 300px;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
@@ -199,12 +215,26 @@ export default {
       font-size: 28px;
       border-bottom: 1px solid rgba(229,229,229,1);
     }
+    .remeber-con{
+      height: 60px;
+      width: 600px;
+      display: flex;
+      align-items: center;
+      input{
+        width: 30px;
+        height: 30px;
+      }
+      span{
+        margin-left: 15px;
+        .mixin-sc(28px;#333);
+      }
+    }
   }
   .submit-con{
     width: 668px;
     height: 88px;
     background: #fff;
-    margin: 120px auto 0px;
+    margin: 80px auto 0px;
     // margin-top: ;
     // background: url('../../image/login-btn.png') no-repeat;
     // background-size:  100% 100%;

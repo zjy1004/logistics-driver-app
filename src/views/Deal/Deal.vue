@@ -18,7 +18,6 @@
               placeholder="请输入修理厂名称"
               :auto-fixed="a"
               @on-submit="recOnSubmit"
-              @on-change="recChange"
               @on-cancel="recOnCancel"
               @on-clear="recOnClear"
               :auto-scroll-to-top=true
@@ -447,21 +446,21 @@ export default {
     receiveVal (value1, value2) {
       this.runShiftId = value1
     },
-    recChange () {
-      this.$vux.toast.show({
-        type: 'success',
-        text: '刷新成功！'
-      })
-      let searchResult = []
-      this.recSourceList.map(item => {
-        // console.log(item.receiveClientName)
-        // console.log(this.recSearchValue)
-        if (item.receiveClientName.includes(this.recSearchValue)) {
-          searchResult.push(item)
-        }
-      })
-      this.receiveListData = searchResult
-    },
+    // recChange () {
+    //   this.$vux.toast.show({
+    //     type: 'success',
+    //     text: '刷新成功！'
+    //   })
+    //   let searchResult = []
+    //   this.recSourceList.map(item => {
+    //     // console.log(item.receiveClientName)
+    //     // console.log(this.recSearchValue)
+    //     if (item.receiveClientName.includes(this.recSearchValue)) {
+    //       searchResult.push(item)
+    //     }
+    //   })
+    //   this.receiveListData = searchResult
+    // },
     // 待收款-搜索
     recOnSubmit () {
       this.$refs.recSearch.setBlur()
